@@ -12,13 +12,14 @@
 #      If you don't want to use it, just delete the option --trained-model
 #   2. For options, check $: python main.py --help
 ########################
-
-log_train_name=log_train
-log_err_name=log_err
+tag="baseline"
+log_name=log_train_${tag}
 pretrained_model=__pretrained/trained_network.pt
+output_dir=./output_model_${tag}
+mkdir ${output_dir}
 
 echo -e "Training"
-echo -e "Please monitor the log trainig: $PWD/${log_train_name}.txt\n"
+echo -e "Please monitor the log trainig: $PWD/${log_name}.txt\n"
 source $PWD/../../env.sh
 python main.py --model-forward-with-file-name \
        --num-workers 3 --epochs 100 \
@@ -27,9 +28,11 @@ python main.py --model-forward-with-file-name \
        --lr-decay-factor 0.5 --lr-scheduler-type 1 \
        --trained-model ${pretrained_model} \
        --ignore-training-history-in-trained-model \
-       --lr 0.0003 --seed 1000 > ${log_train_name}.txt 2>${log_err_name}.txt
+       --save-model-dir ${output_dir} \
+       --lr 0.0003 --seed 1000 2>${log_name}_err.txt |tee ${log_name}.txt
+    #    --l2-penalty 0.0001 \
 echo -e "Training process finished"
-echo -e "Trainig log has been written to $PWD/${log_train_name}.txt"
+echo -e "Trainig log has been written to $PWD/${log_name}.txt"
 
 
 

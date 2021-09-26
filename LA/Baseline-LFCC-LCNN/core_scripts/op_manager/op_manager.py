@@ -49,7 +49,7 @@ class OptimizerWrapper():
         # create optimizer
         if self.op_flag == "Adam":
             if self.l2_penalty > 0:
-                self.optimizer = torch_optim.Adam(model.parameters(), 
+                self.optimizer = torch_optim.AdamW(model.parameters(), 
                                                   lr=self.lr, 
                                                   weight_decay=self.l2_penalty)
             else:
