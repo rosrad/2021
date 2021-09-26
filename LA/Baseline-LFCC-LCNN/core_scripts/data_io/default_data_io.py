@@ -10,6 +10,7 @@ from __future__ import absolute_import
 import os
 import sys
 import numpy as np
+import scipy.io as sio
 import torch
 import torch.utils.data
 
@@ -43,6 +44,9 @@ def _data_reader(file_path, dim, flag_lang):
         sr, data = nii_wav_tk.flacReadAsFloat(file_path)
     elif file_ext == '.txt':
         data = nii_text_tk.textloader(file_path, flag_lang)
+    elif file_ext == '.mat':
+        #read data from matlab mat data
+        data = sio.loadmat(file_path)["fea"].T
     else:
         data = nii_io_tk.f_read_raw_mat(file_path, dim)
     return data
@@ -69,6 +73,10 @@ def _data_len_reader(file_path):
     elif file_ext == '.flac':
         sr, data = nii_wav_tk.flacReadAsFloat(file_path)
         length = data.shape[0]
+    elif file_ext == '.mat':
+        #read data from matlab mat data
+        data = sio.loadmat(file_path)["fea"].T
+        length = data.size
     elif file_ext == '.txt':
         # txt, no need to account length
         # note that this is for tts task
