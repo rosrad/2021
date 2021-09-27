@@ -29,10 +29,8 @@ val_set_name = 'asvspoof2021_val'
 # for convenience
 #  we will use resources in this directory
 # tmp = os.path.dirname(__file__) + '/../DATA/toy_example'
-# baseline
-# tmp = "/home/boren/data/LA"
 # gfcc
-tmp = "/ccpsofsep/am_s1/users/boren/LA_GFCC"
+tmp = "/home/boren/data/LA_GFCC"
 
 # File lists (text file, one data name per line, without name extension)
 # trin_file_list: list of files for training set

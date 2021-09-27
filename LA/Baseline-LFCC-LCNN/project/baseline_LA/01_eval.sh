@@ -8,7 +8,7 @@
 #   2. $: bash 01_eval.sh
 ########################
 
-tag=baseline
+tag=base_gfcc
 log_name=log_eval_${tag}
 trained_model=output_model_${tag}/trained_network.pt 
 
