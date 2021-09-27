@@ -17,4 +17,4 @@ LA/Baseline-LFCC-LCNN/project/baseline_LA/*/*.pt
 LA/Baseline-LFCC-LCNN/project/baseline_LA/*.txt
 LA/Baseline-LFCC-LCNN/project/baseline_LA/*.dic
 LA/Baseline-LFCC-LCNN/project/tDCF_python_v2/__pycache__/
-LA/Baseline-LFCC-LCNN/project/tDCF_python_v2/scores/*
+# LA/Baseline-LFCC-LCNN/project/tDCF_python_v2/scores/*
